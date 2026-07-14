@@ -20,7 +20,7 @@ pipeline {
 
     parameters {
         string(name: 'appVersion', description: 'what app version you want to deploy')
-        choice(name: 'deploy_to', choices: ['dev','qa','prod'], descrption: 'pick something')
+        choice(name: 'deploy_to', choices: ['dev','qa','prod'], description: 'pick something')
     }
 
 // this is build section. added comment for just webhook checking
