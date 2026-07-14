@@ -18,9 +18,14 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    parameters {
+        string(name: 'appVersion', description: 'what app version you want to deploy')
+        choice(name: 'deploy_to', choices: ['dev','qa','prod'], descrption: 'pick something')
+    }
+
 // this is build section. added comment for just webhook checking
     stages {
-        stage('Install Dependencies') {
+        stage('Deploy') {
             steps {
                 sh """
                     npm install --include=dev
