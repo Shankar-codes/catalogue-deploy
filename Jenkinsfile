@@ -30,9 +30,7 @@ pipeline {
                 withAWS(region:'us-east-1',credentials:'aws-creds'){
                     script {
                         sh """
-                            cd 40-ecr
-                            echo "Initializing Terraform... scripted shell command"
-                            terraform init
+                            aws eks update-kubeconfig --region us-east-1 --name ${PROJECT}-${params.deploy_to}
                         """
                     }
                 }
