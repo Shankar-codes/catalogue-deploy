@@ -27,9 +27,15 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                sh """
-                    npm install --include=dev
-                """
+                withAWS(region:'us-east-1',credentials:'aws-creds'){
+                    script {
+                        sh """
+                            cd 40-ecr
+                            echo "Initializing Terraform... scripted shell command"
+                            terraform init
+                        """
+                    }
+                }
             }
         }
 
