@@ -1,0 +1,3 @@
+deployment:
+  image: catalogue
+  imageVersion: v1
