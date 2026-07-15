@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: shankarntr/{{ .Values.deployment.image }}:{{ .Values.deployment.imageVersion }}
+        image: "{{ .Values.deployment.image }}:{{ .Values.deployment.imageVersion }}"
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
@@ -68,5 +68,5 @@ spec:
     tier: backend
   ports:
     - protocol: TCP
-      port: 8080 #service Port
+      port: {{ .Values.service.servicePort }} # service port
       targetPort: 8080 #container Port
